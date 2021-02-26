@@ -20,6 +20,7 @@ body {
     "item item item"
     "item item item";
   margin: 1vh;
+  gap: 1vh;
 }
 
 .bag-item {
@@ -28,23 +29,28 @@ body {
 }
 
 .bag-item:hover {
-  border: 2px darkred solid;
+  border: 2px grey solid;
 }
 
-#shovel {
+.shovel {
   background: url("tile2/shovel.png") no-repeat center center/cover;
 }
 
-#axe {
+.axe {
   background: url("tile2/axe.png") no-repeat center center/cover;
 }
 
-#pickaxe {
+.pickaxe {
   background: url("tile2/pickaxe.png") no-repeat center center/cover;
 }
 
 .unknown {
   background: url("tile2/unknown.png") no-repeat center center/cover;
+}
+
+.selected-item {
+  background-color: darkblue;
+  border: 2px darkred solid;
 }
 
 .game-container {

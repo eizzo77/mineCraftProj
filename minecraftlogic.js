@@ -122,4 +122,17 @@ console.log(
     .getPropertyValue("grid-template-columns")
     .split(" ").length
 );
-// gameWorldMat[0][0].style.backgroundColor = "black";
+
+const bagItems = document.querySelectorAll(".bag-item[data-revealed='true']");
+console.log(bagItems);
+bagItems.forEach((item) =>
+  item.addEventListener("click", (e) => {
+    let selected = document.querySelector(".bag-item[data-selected='true']");
+    if (selected !== null) {
+      selected.classList.remove("selected-item");
+      selected.setAttribute("data-selected", "false");
+    }
+    e.target.classList.add("selected-item");
+    e.target.setAttribute("data-selected", "true");
+  })
+);
