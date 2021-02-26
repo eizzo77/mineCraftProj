@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Minecraft", sans-serif;
+  color: #f4f4f4;
+}
+
+.title {
+  text-align: center;
+}
+
+.inventory,
+.resources-bag {
+  display: grid;
+  grid-template-areas:
+    "item item item"
+    "item item item";
+  margin: 1vh;
+}
+
+.bag-item {
+  border: 2px solid white;
+  height: 8vh;
+}
+
+.bag-item:hover {
+  border: 2px darkred solid;
+}
+
+#shovel {
+  background: url("tile2/shovel.png") no-repeat center center/cover;
+}
+
+#axe {
+  background: url("tile2/axe.png") no-repeat center center/cover;
+}
+
+#pickaxe {
+  background: url("tile2/pickaxe.png") no-repeat center center/cover;
+}
+
+.unknown {
+  background: url("tile2/unknown.png") no-repeat center center/cover;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  overflow: auto;
+  width: 85%;
+}
+
+.game-world {
+  background: url("tile2/sky.jpg") no-repeat center center/cover;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+  max-height: 100vh;
+  width: 150vh;
+  min-width: 300vh;
+}
+
+.side-bar {
+  background-color: #333;
+  max-height: 100vh;
+  width: 15%;
+  padding: 5vh 0;
+}
+
+.side-bar > div {
+  padding: 2vh 0;
+}
+
+.ground-tile {
+  background: url("tile2/soil.jpg") no-repeat center center/cover;
+}
+
+.top-ground-tile {
+  background: url("tile2/soiltop.jpg") no-repeat center center/cover;
+}
+
+.tree-lower {
+  background: url("tile2/lower-tree.jpg") no-repeat center center/cover;
+}
+
+.tree-upper {
+  background: url("tile2/tree-leaves.png") no-repeat center center/cover;
+}
+
+.cloud-tile {
+  background: url("tile2/cloud.png") no-repeat center center/cover;
+}
