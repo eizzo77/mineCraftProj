@@ -1,24 +1,65 @@
 const world = document.querySelector(".game-world");
-const ROWS = window
-  .getComputedStyle(world)
-  .getPropertyValue("grid-template-rows")
-  .split(" ").length;
-const COLS = window
-  .getComputedStyle(world)
-  .getPropertyValue("grid-template-columns")
-  .split(" ").length;
-console.log("COLD ==> " + COLS);
+const gameIntro = document.querySelector(".game-intro");
 
-document
-  .querySelector(".game-mode.normal-mode")
-  .addEventListener("click", () => console.log("ASD"));
+const normalThemeArr = [
+  "url('tile2/sky.jpg')",
+  "url('tile2/soil.jpg')",
+  "url('tile2/soiltop.jpg')",
+  "url('tile2/lower-tree.jpg')",
+  "url('tile2/tree-leaves.png')",
+  "url('tile2/cloud.png')",
+];
+const snowThemeArr = [
+  "url('tile2/sky-snow.jpg')",
+  "url('tile2/soil.jpg')",
+  "url('tile2/soiltop-snow.jpg')",
+  "url('tile2/lower-tree-snow.jpg')",
+  "url('tile2/tree-leaves-snow.png')",
+  "url('tile2/cloud-snow.jpg')",
+];
+const desertThemeArr = [
+  "url('tile2/sky-desert.jpg')",
+  "url('tile2/soil.jpg')",
+  "url('tile2/soiltop-desert.jpg')",
+  "url('tile2/lower-tree-desert.png')",
+  "url('tile2/tree-leaves-desert.png')",
+  "url('tile2/cloud-desert.jpg')",
+];
+const outerThemeArr = [
+  "url('tile2/sky-outer.jpg')",
+  "url('tile2/soil-outer.jpg')",
+  "url('tile2/soiltop-outer.png')",
+  "url('tile2/lower-tree-outer.jpg')",
+  "url('tile2/tree-leaves-outer.png')",
+  "url('tile2/cloud-outer.jpg')",
+];
+
+const themesMapper = new Map([
+  ["normal", normalThemeArr],
+  ["desert", desertThemeArr],
+  ["snow", snowThemeArr],
+  ["outer", outerThemeArr],
+]);
+
+gameModes = document.querySelectorAll(".game-mode");
+gameModes.forEach((mode) =>
+  mode.addEventListener("click", (e) => {
+    const rootStyle = document.documentElement.style;
+    const themes = themesMapper.get(e.target.id);
+    console.log(themes);
+    rootStyle.setProperty("--world-background", themes[0]);
+    rootStyle.setProperty("--ground-background", themes[1]);
+    rootStyle.setProperty("--ground-top-background", themes[2]);
+    rootStyle.setProperty("--tree-lower-background", themes[3]);
+    rootStyle.setProperty("--tree-upper-background", themes[4]);
+    rootStyle.setProperty("--cloud-background", themes[5]);
+  })
+);
 
 // document.documentElement.style.setProperty(
 //   "--world-background",
 //   'url("tile2/sky-snow.jpg")'
 // );
-
-const themesMapper = new Map([[]]);
 
 const resourceToolMapper = new Map([
   ["ground-top-tile", "shovel"],
@@ -27,14 +68,52 @@ const resourceToolMapper = new Map([
   ["tree-upper-tile", "axe"],
 ]);
 
+document.querySelector(".start-game").addEventListener("click", () => {
+  const worldWidthInputEl = document.querySelector(".world-width-input");
+  let valueParsed = parseInt(worldWidthInputEl.value);
+  console.log(valueParsed);
+  let min = parseInt(worldWidthInputEl.getAttribute("min"));
+  let max = parseInt(worldWidthInputEl.getAttribute("max"));
+  if (!valueParsed) {
+    generateWorld(Math.floor(Math.random() * 6000) + 1200);
+    gameIntro.classList.add("disabled");
+  } else if (valueParsed > min && valueParsed < max) {
+    generateWorld(worldWidthInputEl.textContent);
+    gameIntro.classList.add("disabled");
+  } else {
+    alert("please enter a width in the range of ");
+  }
+  console.log(worldWidthInputEl.value);
+});
+
+const generateWorld = (width) => {
+  console.log(world.style.width);
+  world.style.width = `${width}px`;
+  console.log(world.style.width);
+  const gameRows = window
+    .getComputedStyle(world)
+    .getPropertyValue("grid-template-rows")
+    .split(" ").length;
+  const gameCols = window
+    .getComputedStyle(world)
+    .getPropertyValue("grid-template-columns")
+    .split(" ").length;
+  console.log(gameCols);
+  console.log(gameRows);
+  createGameWorld(gameRows, gameCols);
+  generateGround(gameWorldMat, gameRows, gameCols);
+  generateTree(gameWorldMat, gameRows, gameCols);
+  generateCloud(gameWorldMat, gameRows, gameCols);
+};
+
 // to be attached to an Obj:
 let randomGroundTopLevel;
 
 gameWorldMat = [];
 const createGameWorld = (rows, cols) => {
-  for (let i = 0; i < ROWS; ++i) {
+  for (let i = 0; i < rows; ++i) {
     let row = [];
-    for (let j = 0; j < COLS; ++j) {
+    for (let j = 0; j < cols; ++j) {
       let cell = document.createElement("div");
       cell.className = "empty";
       world.appendChild(cell);
@@ -44,10 +123,10 @@ const createGameWorld = (rows, cols) => {
   }
 };
 
-const generateGround = (worldMat) => {
-  randomGroundTopLevel = Math.floor(Math.random() * 4) + ROWS - 5;
-  for (let i = randomGroundTopLevel; i < ROWS; ++i) {
-    for (let j = 0; j < COLS; ++j) {
+const generateGround = (worldMat, rows, cols) => {
+  randomGroundTopLevel = Math.floor(Math.random() * 4) + rows - 5;
+  for (let i = randomGroundTopLevel; i < rows; ++i) {
+    for (let j = 0; j < cols; ++j) {
       let groundCell = worldMat[i][j];
       groundCell.className =
         i === randomGroundTopLevel ? "ground-top-tile" : "ground-tile";
@@ -77,11 +156,11 @@ const createTree = (worldMat, colsPosArr) => {
   });
 };
 
-const generateTree = (worldMat) => {
-  let numOfGeneratedTrees = Math.floor(COLS / 10); //29 -> 2
+const generateTree = (worldMat, rows, cols) => {
+  let numOfGeneratedTrees = Math.floor(cols / 10); //29 -> 2
   let generatedTreesCols = [];
   while (numOfGeneratedTrees > 0) {
-    let randomTreeColPos = Math.floor(Math.random() * (COLS - 5)) + 3;
+    let randomTreeColPos = Math.floor(Math.random() * (cols - 5)) + 3;
     if (
       generatedTreesCols.length === 0 ||
       !generatedTreesCols.find((c) => Math.abs(c - randomTreeColPos) < 6)
@@ -114,11 +193,11 @@ const createCloud = (worldMat, colsPosArr) => {
   });
 };
 
-const generateCloud = (worldMat) => {
-  let numOfGeneratedClouds = Math.floor(COLS / 15);
+const generateCloud = (worldMat, rows, cols) => {
+  let numOfGeneratedClouds = Math.floor(cols / 15);
   let generatedCloudCols = [];
   while (numOfGeneratedClouds > 0) {
-    let randomCloudsColsPos = Math.floor(Math.random() * (COLS - 8)) + 3;
+    let randomCloudsColsPos = Math.floor(Math.random() * (cols - 8)) + 3;
     if (
       generatedCloudCols.length === 0 ||
       !generatedCloudCols.find((c) => Math.abs(c - randomCloudsColsPos) < 7)
@@ -130,10 +209,7 @@ const generateCloud = (worldMat) => {
   createCloud(worldMat, generatedCloudCols);
 };
 
-createGameWorld(ROWS, COLS);
-generateGround(gameWorldMat);
-generateTree(gameWorldMat);
-generateCloud(gameWorldMat);
+// another obj
 
 const bagItems = document.querySelectorAll(".bag-item[data-revealed='true']");
 console.log(bagItems);

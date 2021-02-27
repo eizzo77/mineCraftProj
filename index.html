@@ -11,11 +11,12 @@
 <body>
     <div class="game-intro">
         <div class="menu-container">
-            <div class="start-game-wrapper"><h2>Start Game</h2>
+            <div class="start-game-wrapper">
+                <h2 class="start-game" style="cursor: pointer;">Start Game</h2>
                 <div class="biege-text"><label>choose Width (PX)</label></div>
-                <div><input type="text" placeholder="Random if not filled"></div>
+                <div><input class="world-width-input" type="number" placeholder="Random if not filled" min="1000" max="5500"></div>
             </div>
-            <div><h2>Tutorial</h2></div>
+            <div><h2 style="cursor: pointer;">Tutorial</h2></div>
         </div>
         <div class="gameModes biege-text">Choose Game Mode</div>
         <div class="gameModes-container">
@@ -25,10 +26,10 @@
             <div>Outer World</div>
         </div>
         <div class="gameModes-container">
-            <div class="game-mode normal-mode"></div>
-            <div class="game-mode"></div>
-            <div class="game-mode"></div>
-            <div class="game-mode"></div>
+            <div id="normal" class="game-mode"></div>
+            <div id="desert" class="game-mode"></div>
+            <div id="snow" class="game-mode"></div>
+            <div id="outer" class="game-mode"></div>
         </div>
     </div>
     <div class="game-container">
