@@ -9,6 +9,28 @@
     <link href="http://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 </head>
 <body>
+    <div class="game-intro">
+        <div class="menu-container">
+            <div class="start-game-wrapper"><h2>Start Game</h2>
+                <div class="biege-text"><label>choose Width (PX)</label></div>
+                <div><input type="text" placeholder="Random if not filled"></div>
+            </div>
+            <div><h2>Tutorial</h2></div>
+        </div>
+        <div class="gameModes biege-text">Choose Game Mode</div>
+        <div class="gameModes-container">
+            <div>Normal</div>
+            <div>Desert</div>
+            <div>Snow</div>
+            <div>Outer World</div>
+        </div>
+        <div class="gameModes-container">
+            <div class="game-mode normal-mode"></div>
+            <div class="game-mode"></div>
+            <div class="game-mode"></div>
+            <div class="game-mode"></div>
+        </div>
+    </div>
     <div class="game-container">
         <div class="wrapper">
             <div class="game-world"></div>
@@ -26,12 +48,14 @@
             </div>
             <div class="title">Resources</div>
             <div class="resources-bag">
-                <div id="ground" class="bag-item">0</div>
-                <div id="lumber" class="bag-item">0</div>
-                <div id="stone" class="bag-item">0</div>
-                <div id="liquid" class="bag-item">0</div>
-                <div id="leather" class="bag-item">0</div>
-                <div id="diamond" class="bag-item">0</div>
+                <div id="ground" data-revealed="true" class="bag-item">0</div>
+                <div id="ground-top" data-revealed="true" class="bag-item">0</div>
+                <div id="tree-upper" data-revealed="true" class="bag-item">0</div>
+                <div id="tree-lower" data-revealed="true" class="bag-item">0</div>
+                <div id="stone" data-revealed="true" class="bag-item">0</div>
+                <div id="liquid" data-revealed="true" class="bag-item">0</div>
+                <div id="leather" data-revealed="true" class="bag-item">0</div>
+                <div id="diamond" data-revealed="true" class="bag-item">0</div>
             </div>
         </div>
     </div>

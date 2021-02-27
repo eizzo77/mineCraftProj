@@ -1,3 +1,12 @@
+:root {
+  --world-background: url("tile2/sky.jpg");
+  --ground-background: url("tile2/soil.jpg");
+  --ground-top-background: url("tile2/soiltop.jpg");
+  --tree-lower-background: url("tile2/lower-tree.jpg");
+  --tree-upper-background: url("tile2/tree-leaves.png");
+  --cloud-background: url("tile2/cloud.png");
+}
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -13,12 +22,75 @@ body {
   text-align: center;
 }
 
+.biege-text {
+  color: bisque;
+  text-shadow: 2px 2px darkred;
+}
+
+.game-intro {
+  background: url("tile2/introBg.jpg") no-repeat center center/cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-container {
+  margin-bottom: 3vh;
+}
+
+.menu-container h2 {
+  text-align: center;
+  text-shadow: 5px 5px blue, 0 0 10px black;
+  font-size: -webkit-xxx-large;
+  color: seashell;
+}
+
+.menu-container > div {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.start-game-wrapper > div {
+  padding: 10px;
+}
+
+.gameModes-container {
+  height: 3vh;
+  width: 100%;
+  margin-top: 3vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.gameModes-container > div {
+  padding: 0px 15vh;
+}
+
+.game-mode {
+  border: 2px solid black;
+  height: 20vh;
+}
+
+.game-mode:hover {
+  border: 2px solid darkorange;
+}
+
+.normal-mode {
+  background: url("tile2/normal-world-mode.jpg") no-repeat center center/cover;
+}
+
 .inventory,
 .resources-bag {
   display: grid;
   grid-template-areas:
     "item item item"
     "item item item";
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 1vh;
   gap: 1vh;
 }
@@ -65,16 +137,16 @@ body {
 .wrapper {
   overflow: auto;
   width: 85%;
+  height: 98vh;
 }
 
 .game-world {
-  background: url("tile2/sky.jpg") no-repeat center center/cover;
+  background: var(--world-background) no-repeat center center/cover;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
   max-height: 100vh;
-  width: 85vw;
-  /* min-width: 300vh; */
+  width: 500vw;
 }
 
 .side-bar {
@@ -90,22 +162,28 @@ body {
 
 .ground-tile,
 #ground {
-  background: url("tile2/soil.jpg") no-repeat center center/cover;
+  background: var(--ground-background) no-repeat center center/cover;
 }
 
-.top-ground-tile {
-  background: url("tile2/soiltop.jpg") no-repeat center center/cover;
+.ground-top-tile,
+#ground-top {
+  background: var(--ground-top-background) no-repeat center center/cover;
 }
 
-.tree-lower,
-#lumber {
-  background: url("tile2/lower-tree.jpg") no-repeat center center/cover;
+.tree-lower-tile,
+#tree-lower {
+  background: var(--tree-lower-background) no-repeat center center/cover;
 }
 
-.tree-upper {
-  background: url("tile2/tree-leaves.png") no-repeat center center/cover;
+.tree-upper-tile,
+#tree-upper {
+  background: var(--tree-upper-background) no-repeat center center/cover;
 }
 
 .cloud-tile {
-  background: url("tile2/cloud.png") no-repeat center center/cover;
+  background: var(--cloud-background) no-repeat center center/cover;
+}
+
+.disabled {
+  display: none;
 }
