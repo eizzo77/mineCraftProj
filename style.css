@@ -48,6 +48,10 @@ body {
   background: url("tile2/unknown.png") no-repeat center center/cover;
 }
 
+.empty {
+  background: none;
+}
+
 .selected-item {
   background-color: darkblue;
   border: 2px darkred solid;
@@ -69,8 +73,8 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
   max-height: 100vh;
-  width: 150vh;
-  min-width: 300vh;
+  width: 85vw;
+  /* min-width: 300vh; */
 }
 
 .side-bar {
@@ -84,7 +88,8 @@ body {
   padding: 2vh 0;
 }
 
-.ground-tile {
+.ground-tile,
+#ground {
   background: url("tile2/soil.jpg") no-repeat center center/cover;
 }
 
@@ -92,7 +97,8 @@ body {
   background: url("tile2/soiltop.jpg") no-repeat center center/cover;
 }
 
-.tree-lower {
+.tree-lower,
+#lumber {
   background: url("tile2/lower-tree.jpg") no-repeat center center/cover;
 }
 
