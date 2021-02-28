@@ -51,7 +51,7 @@ body {
 }
 
 .tutorial-desc {
-  display: block;
+  display: none;
   position: absolute;
   background: #222;
   border-radius: 10px;
