@@ -16,7 +16,16 @@
                 <div class="biege-text"><label>choose Width (PX)</label></div>
                 <div><input class="world-width-input" type="number" placeholder="Random if not filled" min="1000" max="5500"></div>
             </div>
-            <div><h2 style="cursor: pointer;">Tutorial</h2></div>
+            <div><h2 class="tutorial" style="cursor: pointer;">Tutorial</h2></div>
+            <div class="tutorial-desc">
+                <div class="exit-tut" style="cursor: pointer;"><i class="fas fa-times-circle"></i></div>
+                <h3>Welcome to Itay's MineCraft Project 1.0!</h3>
+                <p>First make sure you pick a width between 1000-5500 px! if the text box is empty a Random width generates</p>
+                <p>Pick your favorite Theme and start exploring the pixeled World.</p>
+                <p>You have 3 tools (for now...). make sure you use the right Tool for the suitable Resource!</p> 
+                <p>To be added: Responsiveness - the game is not responsive at all for now</p>
+                <p>More tools,more Resources & more themes to come!</p>
+            </div>
         </div>
         <div class="gameModes biege-text">Choose Game Mode</div>
         <div class="gameModes-container">
@@ -42,7 +51,7 @@
             <div class="inventory">
                 <div id="shovel" data-revealed="true" data-selected="false" class="shovel bag-item"></div>
                 <div id="axe" data-revealed="true" data-selected="false" class="axe bag-item"></div>
-                <div data-revealed="true" data-selected="false" class="pickaxe bag-item"></div>
+                <div id="pickaxe" data-revealed="true" data-selected="false" class="pickaxe bag-item"></div>
                 <div class="bag-item unknown"></div>
                 <div class="bag-item unknown"></div>
                 <div class="bag-item unknown"></div>
@@ -53,13 +62,15 @@
                 <div id="ground-top" data-revealed="true" class="bag-item">0</div>
                 <div id="tree-upper" data-revealed="true" class="bag-item">0</div>
                 <div id="tree-lower" data-revealed="true" class="bag-item">0</div>
-                <div id="stone" data-revealed="true" class="bag-item">0</div>
+                <div id="rock" data-revealed="true" class="bag-item">0</div>
                 <div id="liquid" data-revealed="true" class="bag-item">0</div>
                 <div id="leather" data-revealed="true" class="bag-item">0</div>
                 <div id="diamond" data-revealed="true" class="bag-item">0</div>
             </div>
+            <div id="reset" class="reset-world title" style="cursor: pointer;">Reset World</div>
         </div>
     </div>
     <script src="minecraftlogic.js"></script>
+    <script src="https://kit.fontawesome.com/c6a66643cf.js" crossorigin="anonymous"></script>
 </body>
 </html>

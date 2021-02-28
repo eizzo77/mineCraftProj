@@ -5,6 +5,7 @@
   --tree-lower-background: url("tile2/lower-tree.jpg");
   --tree-upper-background: url("tile2/tree-leaves.png");
   --cloud-background: url("tile2/cloud.png");
+  --rock-background: url("tile2/rock.png");
 }
 
 * {
@@ -49,6 +50,28 @@ body {
   color: seashell;
 }
 
+.tutorial-desc {
+  display: block;
+  position: absolute;
+  background: #222;
+  border-radius: 10px;
+  width: 40vw;
+  height: 40vh;
+  left: 50vh;
+  bottom: 40%;
+}
+
+.tutorial-desc > h3,
+.tutorial-desc > p {
+  margin-bottom: 2%;
+}
+
+.exit-tut {
+  position: absolute;
+  right: 1%;
+  top: 0vh;
+}
+
 .menu-container > div {
   text-align: center;
   padding: 10px 0;
@@ -81,6 +104,18 @@ body {
 
 #normal {
   background: url("tile2/normal-world-mode.jpg") no-repeat center center/cover;
+}
+
+#desert {
+  background: url("tile2/desert-world-mode.jpg") no-repeat center center/cover;
+}
+
+#snow {
+  background: url("tile2/snow-world-mode.jpg") no-repeat center center/cover;
+}
+
+#outer {
+  background: url("tile2/outer-world-mode.jpg") no-repeat center center/cover;
 }
 
 .inventory,
@@ -184,6 +219,15 @@ body {
   background: var(--cloud-background) no-repeat center center/cover;
 }
 
+.rock-tile,
+#rock {
+  background: var(--rock-background) no-repeat center center/cover;
+}
+
 .disabled {
   display: none;
+}
+
+.reset-world {
+  color: chocolate;
 }
