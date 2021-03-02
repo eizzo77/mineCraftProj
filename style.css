@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Minecraft";
+  src: url("font/MinecraftTen-VGORe.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
 :root {
   --world-background: url("tile2/sky.jpg");
   --ground-background: url("tile2/soil.jpg");
