@@ -1,7 +1,9 @@
 const CURSOR_SHOVEL = "url('tile2/shovel_cursor.cur'), auto";
 const HOVER_MENU_AUDIO = new Audio("audio/menu-hover.mp3");
-HOVER_MENU_AUDIO.volume = 0.45;
-const MINECRAFT_AUDIO = document.querySelector("#audioContainer");
+HOVER_MENU_AUDIO.volume = 0.25;
+// const MINECRAFT_AUDIO = document.querySelector("#audioContainer");
+const MINECRAFT_AUDIO_URL = "https://sndup.net/8hq7/d";
+const MINECRAFT_AUDIO = new Audio(MINECRAFT_AUDIO_URL);
 MINECRAFT_AUDIO.volume = 0.6;
 MINECRAFT_AUDIO.addEventListener("ended", () => {
   this.currentTime = 0;
@@ -72,7 +74,10 @@ gameModes.forEach((mode) =>
   })
 );
 gameModes.forEach((mode) => {
-  mode.addEventListener("mouseover", (e) => HOVER_MENU_AUDIO.play());
+  mode.addEventListener("mouseover", (e) => {
+    HOVER_MENU_AUDIO.currentTime = 0;
+    HOVER_MENU_AUDIO.play();
+  });
 });
 
 // resources to tools mapper - keys are the HTML injected elements, values are the tools ids
