@@ -1,3 +1,14 @@
+const CURSOR_SHOVEL = "url('tile2/shovel_cursor.cur'), auto";
+const HOVER_MENU_AUDIO = new Audio("audio/menu-hover.mp3");
+HOVER_MENU_AUDIO.volume = 0.45;
+const MINECRAFT_AUDIO = new Audio("audio/Minecraft.mp3");
+MINECRAFT_AUDIO.volume = 0.5;
+MINECRAFT_AUDIO.addEventListener("ended", () => {
+  this.currentTime = 0;
+  this.play();
+});
+MINECRAFT_AUDIO.play();
+
 // initialization of the world and game intro screen elements
 const world = document.querySelector(".game-world");
 const gameIntro = document.querySelector(".game-intro");
@@ -38,7 +49,7 @@ const outerThemeArr = [
   "url('tile2/cloud-outer.jpg')",
   "url('tile2/rock-outer.png')",
 ];
-// themes map keys are the id of the html elements of the themes and values are the array above.
+// themes map keys are the ids of the html elements of the themes and values are the array above.
 const themesMapper = new Map([
   ["normal", normalThemeArr],
   ["desert", desertThemeArr],
@@ -60,6 +71,9 @@ gameModes.forEach((mode) =>
     rootStyle.setProperty("--rock-background", themes[6]);
   })
 );
+gameModes.forEach((mode) => {
+  mode.addEventListener("mouseover", (e) => HOVER_MENU_AUDIO.play());
+});
 
 // resources to tools mapper - keys are the HTML injected elements, values are the tools ids
 const resourceToolMapper = new Map([
@@ -321,6 +335,7 @@ const logic = {
         }
         e.target.classList.add("selected-item");
         e.target.setAttribute("data-selected", "true");
+        document.body.style.cursor = CURSOR_SHOVEL;
       })
     );
   },
