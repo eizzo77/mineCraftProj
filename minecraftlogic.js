@@ -1,8 +1,8 @@
 const CURSOR_SHOVEL = "url('tile2/shovel_cursor.cur'), auto";
 const HOVER_MENU_AUDIO = new Audio("audio/menu-hover.mp3");
 HOVER_MENU_AUDIO.volume = 0.45;
-const MINECRAFT_AUDIO = new Audio("audio/Minecraft.mp3");
-MINECRAFT_AUDIO.volume = 0.5;
+const MINECRAFT_AUDIO = document.querySelector("#audioContainer");
+MINECRAFT_AUDIO.volume = 0.6;
 MINECRAFT_AUDIO.addEventListener("ended", () => {
   this.currentTime = 0;
   this.play();
