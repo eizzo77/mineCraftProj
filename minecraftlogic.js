@@ -4,12 +4,12 @@ HOVER_MENU_AUDIO.volume = 0.25;
 // const MINECRAFT_AUDIO = document.querySelector("#audioContainer");
 const MINECRAFT_AUDIO_URL = "https://sndup.net/8hq7/d";
 const MINECRAFT_AUDIO = new Audio(MINECRAFT_AUDIO_URL);
+MINECRAFT_AUDIO.currentTime = 0;
 MINECRAFT_AUDIO.volume = 0.6;
 MINECRAFT_AUDIO.addEventListener("ended", () => {
   this.currentTime = 0;
   this.play();
 });
-MINECRAFT_AUDIO.play();
 
 // initialization of the world and game intro screen elements
 const world = document.querySelector(".game-world");
@@ -91,6 +91,7 @@ const resourceToolMapper = new Map([
 // this is where everything starts, once clicking the start game button the
 // generation of the world, handlers and logic methods are invoked
 document.querySelector(".start-game").addEventListener("click", () => {
+  MINECRAFT_AUDIO.play();
   const worldWidthInputEl = document.querySelector(".world-width-input");
   let valueParsed = parseInt(worldWidthInputEl.value);
   let min = parseInt(worldWidthInputEl.getAttribute("min"));
